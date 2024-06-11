@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const markDown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 
 inquirer
@@ -52,6 +52,14 @@ inquirer
       name: 'Questions',
   }],
 )
+.then((data) => {
+  const filename = `${data}.json`;
+
+  fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+    err ? console.log(err) : console.log('Success!')
+  );
+});
+
 // .then((response) =>
 //   console.log(colors[response.color](`Your favorite color is ${response.color}!`))
 // );
@@ -68,20 +76,4 @@ function init() {}
 
 // Function call to initialize app
 init();
-
-// // const inquirer = require('inquirer');
-// // const colors = require('colors');
-
-// // inquirer
-// //   .prompt([
-// //     {
-// //       type: "list",
-// //       message: "What is your favorite color?",
-// //       name: "color",
-// //       choices: ["red", "blue", "green", "yellow", "cyan", "magenta"],
-// //     }
-// //   ])
-// //   .then((response) =>
-// //     console.log(colors[response.color](`Your favorite color is ${response.color}!`))
-// //   );
 
