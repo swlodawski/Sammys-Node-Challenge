@@ -1,11 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
 const markDown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 
-inquirer
-.prompt([
+questions =
     {
       type: 'input',
       message: 'What is the title of your project?',
@@ -19,7 +19,7 @@ inquirer
     {
       type: 'input',
       message: 'Provide a table of contents',
-      name: 'Table of Contents',
+      name: 'Contents',
     },
     {
       type: 'input',
@@ -50,30 +50,13 @@ inquirer
       type: 'input',
       message: 'Do you have any questions regarding this project?',
       name: 'Questions',
-  }],
-)
+  },
 .then((data) => {
-  const filename = `${data}.json`;
+  const filename = `${data}`;
 
-  fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+  fs.writeFile(filename, data(data, null, '\t'), (err) =>
     err ? console.log(err) : console.log('Success!')
+  
   );
 });
-
-// .then((response) =>
-//   console.log(colors[response.color](`Your favorite color is ${response.color}!`))
-// );
-
-// TODO: Create a function to write README file
-// function writeToFile(readMe, data) {}
-// const writeToReadMe = (data) => {
-//   fs.writeFile('readme.txt', data, (err) => {
-//       err ? console.error(err) : console.log('readme created!')
-//   })
-// }
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
 
