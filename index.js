@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
+const { wrap } = require('module');
 // TODO: Create an array of questions for user input
 
 questions = [
@@ -54,7 +55,7 @@ questions = [
   },
 ];
 
-  function fswriteFile(filename, data) {
+  function writeFile(filename, data) {
     console.info('data:', data)
     return fs.writeFileSync(path.join(process.cwd(),filename),data);
   }
@@ -62,7 +63,7 @@ questions = [
   function init() {
 inquirer.prompt(questions).then((answers) => {
   console.log('Generating Readme...')
-  fs.writeFile('readmeResults.md', generateMarkdown({...answers}))
+  writeFile('readmeResults.md', generateMarkdown({...answers}))
 });
 }
 
