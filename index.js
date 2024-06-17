@@ -3,9 +3,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 const markDown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 
-questions =
+questions = [
     {
       type: 'input',
       message: 'What is the title of your project?',
@@ -37,9 +38,10 @@ questions =
       name: 'Contributors',
     },
     {
-      type: 'input',
+      type: 'list',
       message: 'Do you want a license?',
       name: 'License',
+      choices: ['none','MIT', 'Apache',]
     },
     {
       type: 'input',
@@ -51,12 +53,19 @@ questions =
       message: 'Do you have any questions regarding this project?',
       name: 'Questions',
   },
-.then((data) => {
-  const filename = `${data}`;
+];
 
-  fs.writeFile(filename, data(data, null, '\t'), (err) =>
-    err ? console.log(err) : console.log('Success!')
-  
-  );
+  function fswriteFile(filename, data) {
+    console.info('data:', data)
+    return fs.writeFileSync(path.join(process.cwd(),filename),data);
+  }
+
+  function init() {
+inquirer.prompt(questions).then((answers) => {
+  console.log('Generating Readme...')
+  fs.writeFile('readmeResults.md', generateMarkdown({...answers}))
 });
+}
 
+
+init();
