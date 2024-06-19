@@ -2,8 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
-const generateMarkdown = require('./utils/generateMarkdown');
-const { wrap } = require('module');
+const generateMarkdown = require('./generateMarkdown');
+const { type } = require('os');
 // TODO: Create an array of questions for user input
 
 questions = [
@@ -52,6 +52,15 @@ questions = [
       type: 'input',
       message: 'Do you have any questions regarding this project?',
       name: 'Questions',
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'please enter an email address where you can be contacted'
+  },
+  {
+    type: 'input',
+    name: 'Please enter the lnik to your github profile'
   },
 ];
 
