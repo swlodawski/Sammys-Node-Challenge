@@ -15,14 +15,12 @@ return badges[license]  || '';
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-if(!license) {
   if(license) {
     return '';
   }
 const links = {
   'MIT': 'https://opensource.org/licenses/MIT',
   'Apache 2.0': 'https://opensource.org/licenses/Apache-2.0',
-}
 };
 
 return links[license] || '';
@@ -46,13 +44,13 @@ function generateMarkdown(data) {
   ###Description
    # ${data.description}
   ###Table of Contents
-  [installation](#installation)
-  [usage](#usage)
-  [contributors](#contributors)
-  [license](#license)
-  [tests](#tests)
-  [questions](#questions)
-  [Installation](#Installation)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributors](#contributors)
+  - [License](#license)
+  - [Tests](#tests)
+  - [Questions](#questions)
+  - [Installation](#Installation)
    #### ${data.contents}
    ###Installation
    #### ${data.installation}
@@ -61,12 +59,14 @@ function generateMarkdown(data) {
    ###Contributors
    #### ${data.contributors}
    ###License
+  ${console.log(renderLicenseSection(data.license))}
+  ${console.log(renderLicenseLink(data.license))}
+  ${console.log(renderLicenseBadge(data.license))}
    #### ${data.license}
    ###Tests
    #### ${data.tests}
    ###Questions
-    #### If you have any questions, please open an issue or contact me via email at ${data.email}. You can find more of my work at ${data.github}.
-    `
+    #### If you have any questions, contact me ${data.email}. My github profile is for my other work ${data.github}.`
 }
 
 module.exports = generateMarkdown;

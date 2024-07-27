@@ -5,7 +5,7 @@ const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 
-questions = [
+const questions = [
     {
       type: 'input',
       message: 'What is the title of your project?',
@@ -59,7 +59,7 @@ questions = [
   },
   {
     type: 'input',
-    name: 'Please enter the lnik to your github profile'
+    name: 'Please enter the link to your github profile'
   },
 ];
 
