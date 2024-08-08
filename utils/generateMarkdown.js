@@ -39,34 +39,65 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
+// function generateMarkdown(data) {
+//   return `# ${data.title}
+//   ###Description
+//    # ${data.description}
+//   ###Table of Contents
+//   - [Installation](#installation)
+//   - [Usage](#usage)
+//   - [Contributors](#contributors)
+//   - [License](#license)
+//   - [Tests](#tests)
+//   - [Questions](#questions)
+//   - [Installation](#Installation)
+//    #### ${data.contents}
+//    ###Installation
+//    #### ${data.installation}
+//    ###Usage
+//    #### ${data.usage}
+//    ###Contributors
+//    #### ${data.contributors}
+//    ###License
+//   ${console.log(renderLicenseSection(data.license))}
+//   ${console.log(renderLicenseLink(data.license))}
+//   ${console.log(renderLicenseBadge(data.license))}
+//    #### ${data.license}
+//    ###Tests
+//    #### ${data.tests}
+//    ###Questions
+//     #### If you have any questions, contact me ${data.email}. My github profile is for my other work ${data.github}.`
+// }
 function generateMarkdown(data) {
-  return `# ${data.title}
-  ###Description
-   # ${data.description}
-  ###Table of Contents
+   
+  // console.log(data); 
+return `# ${data.title}
+  ## Description
+  #### ${data.description}
+  ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Contributors](#contributors)
   - [License](#license)
+  - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
-  - [Installation](#Installation)
-   #### ${data.contents}
-   ###Installation
-   #### ${data.installation}
-   ###Usage
-   #### ${data.usage}
-   ###Contributors
-   #### ${data.contributors}
-   ###License
+  ## Installation
+  #### ${data.installation}
+  ## Usage
+  #### ${data.usage}
+  ## License
   ${console.log(renderLicenseSection(data.license))}
   ${console.log(renderLicenseLink(data.license))}
   ${console.log(renderLicenseBadge(data.license))}
-   #### ${data.license}
-   ###Tests
-   #### ${data.tests}
-   ###Questions
-    #### If you have any questions, contact me ${data.email}. My github profile is for my other work ${data.github}.`
+  #### ${data.license}
+  ## Contributing
+  #### ${data.contributing}
+  ## Tests
+  #### ${data.tests}
+  ## Questions
+  #### If you have any questions, please open an issue or contact me via email at ${data.email}. You can find more of my work at ${data.github}.
+    `
 }
+
 
 module.exports = generateMarkdown;
