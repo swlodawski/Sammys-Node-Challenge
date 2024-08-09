@@ -68,16 +68,13 @@ function writeToFile(fileName, data) {
   console.info('data:', data);
   return fs.writeFileSync(path.join(process.cwd(),fileName),data);
   }
-  
-  // TODO: Create a function to initialize app
-  function init() { 
-  inquirer
-    .prompt(questions)
-    .then(answers => {
-      console.log("Generating README...")
-      writeToFile('sammyReadMe.md', generateMarkdown({...answers})
-   ) });
+
+  async function init() {
+    const answers = await
+    inquirer.prompt(questions);
+    console.log('Created a readme successfully...');
+
+    writeToFile('SamReadme.md', generateMarkdown(answers));
   }
-  
   // Function call to initialize app
   init();
